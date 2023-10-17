@@ -1,0 +1,25 @@
+syntax = "v1"
+
+service admin-api {
+	@handler DeviceListHandler
+	get /device/list(DeviceListRequest) returns (DeviceListResponse)
+}
+
+type DeviceListRequest {
+	Page int    `josn:"page,optional"`
+	Size int    `json:"size,optional"`
+	Name string `json:"name,optional"`
+}
+
+type DeviceListBaisc {
+	Identity    string `json:"identity"`
+	Name        string `json:"name"`
+	Key         string `json:"key"`
+	Secret      string `json:"secret"`
+	ProductName string `json:"product_name"`
+}
+
+type DeviceListResponse {
+	List  []*DeviceListBaisc `json:"list"`
+	Count int64              `json:"count"`
+}
