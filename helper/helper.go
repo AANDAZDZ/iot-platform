@@ -16,6 +16,13 @@ func Md5(s string) string {
 	return fmt.Sprintf("%x", md5.Sum([]byte(s)))
 }
 
+func If(condition bool, trueValue, falseValue interface{}) interface{} {
+	if condition {
+		return trueValue
+	}
+	return falseValue
+}
+
 func GenerateToken(id uint, identity, name string, second int) (string, error) {
 	uc := define.UserClaim{
 		Id:       id,
